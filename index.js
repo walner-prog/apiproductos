@@ -200,14 +200,7 @@ app.put('/products/:id', (req, res) => {
   
     res.json({ message: 'Producto eliminado exitosamente', product: deletedProduct[0] });
   });
-  
-  // Ruta para crear un nuevo producto
-app.post('/products', (req, res) => {
-  const newProduct = req.body;
-  // Aquí deberías agregar lógica para validar y guardar el nuevo producto en tu base de datos
-  // Luego, devuelve el producto creado en la respuesta
-  res.json(newProduct);
-});
+ 
 
 
 // Ruta para crear un nuevo producto
