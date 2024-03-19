@@ -201,6 +201,33 @@ app.put('/products/:id', (req, res) => {
     res.json({ message: 'Producto eliminado exitosamente', product: deletedProduct[0] });
   });
   
+  // Ruta para crear un nuevo producto
+app.post('/products', (req, res) => {
+  const newProduct = req.body;
+  // Aquí deberías agregar lógica para validar y guardar el nuevo producto en tu base de datos
+  // Luego, devuelve el producto creado en la respuesta
+  res.json(newProduct);
+});
+
+
+// Ruta para crear un nuevo producto
+app.post('/products', (req, res) => {
+  const newProduct = req.body;
+
+  // Verifica que todos los campos requeridos estén presentes en la solicitud
+  if (!newProduct.name || !newProduct.description || !newProduct.price || !newProduct.category || !newProduct.image) {
+      return res.status(400).json({ message: 'Todos los campos son requeridos: name, description, price, category, image' });
+  }
+
+  // Asigna un nuevo ID al producto
+  newProduct.id = products.length + 1;
+
+  // Agrega el nuevo producto a la base de datos simulada
+  products.push(newProduct);
+
+  // Devuelve el nuevo producto en la respuesta
+  res.status(201).json(newProduct);
+});
 
 // Iniciar el servidor
 app.listen(port, () => {
