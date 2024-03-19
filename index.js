@@ -1,4 +1,9 @@
 const express = require('express');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+
+const axios = require('axios');
+
 const app = express();
 
 const bodyParser = require('body-parser');
@@ -12,6 +17,9 @@ const port = 3000;
 
 // Middleware para parsear JSON
 app.use(express.json());
+
+
+
 
 /// Base de datos en memoria (simulación)
 const products = [
@@ -221,6 +229,17 @@ app.post('/products', (req, res) => {
   // Devuelve el nuevo producto en la respuesta
   res.status(201).json(newProduct);
 });
+
+axios.get('https://apiproduct-nveo.onrender.com/products')
+  .then(response => {
+    const products = response.data;
+    const categories = [...new Set(products.map(product => product.category))];
+    console.log('Categorías disponibles:', categories);
+  })
+  .catch(error => {
+    console.error('Error al obtener las categorías:', error);
+  });
+
 
 // Iniciar el servidor
 app.listen(port, () => {
