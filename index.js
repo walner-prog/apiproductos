@@ -96,7 +96,7 @@ const products = [
   { id: 57, name: 'Batidora de Pie', description: 'Batidora con tazón grande y múltiples velocidades', price: 129.99, category: 'Electrodomésticos', image: 'URL_IMAGEN_57' },
   { id: 58, name: 'Freidora de Aire', description: 'Freidora sin aceite para cocinar de manera más saludable', price: 69.99, category: 'Electrodomésticos', image: 'URL_IMAGEN_58' },
   { id: 59, name: 'Plancha de Vapor', description: 'Plancha con función de vapor y suela antiadherente', price: 39.99, category: 'Electrodomésticos', image: 'URL_IMAGEN_59' },
-  { id: 60, name: 'Exprimidor de Cítricos', description: 'Exprimidor eléctrico para preparar jugos frescos', price: 29.99, category: 'Electrodomésticos', image: 'URL_IMAGEN_60' },
+  { id: 60, name: 'Exprimidor de Cítricos', description: 'Exprimidor eléctrico para preparar jugos frescos', price: 29, category: 'Electrodomésticos', image: 'URL_IMAGEN_60' },
 ];
 
 
