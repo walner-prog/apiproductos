@@ -1,6 +1,9 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const authController = require('./authController'); // Asegúrate de que la ruta sea correcta
+// Luego, utiliza authController como un middleware
+
 
 const axios = require('axios');
 
@@ -13,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const cors = require('cors');
 app.use(cors());
 
-const port = 3000;
+const port = 3001;
 
 // Middleware para parsear JSON
 app.use(express.json());
@@ -81,8 +84,19 @@ const products = [
   { id: 47, name: 'Patineta Profesional', description: 'Patineta con tabla de arce para trucos profesionales', price: 89.99, category: 'Deportes', image: 'URL_IMAGEN_47' },
   { id: 48, name: 'Botella de Agua Deportiva', description: 'Botella con boquilla a prueba de fugas para actividades al aire libre', price: 9.99, category: 'Deportes', image: 'URL_IMAGEN_48' },
   { id: 49, name: 'Pelota de Yoga', description: 'Pelota de yoga anti-explosión para entrenamiento de equilibrio', price: 15.99, category: 'Deportes', image: 'URL_IMAGEN_49' },
-  { id: 50, name: 'Cuerda de Saltar Profesional', description: 'Cuerda ajustable para saltar con mangos antideslizantes', price: 12.99, category: 'Deportes', image: 'URL_IMAGEN_50' }
+  { id: 50, name: 'Cuerda de Saltar Profesional', description: 'Cuerda ajustable para saltar con mangos antideslizantes', price: 12.99, category: 'Deportes', image: 'URL_IMAGEN_50' },
   // Puedes agregar más productos de Deportes según sea necesario
+
+  { id: 51, name: 'Lavadora de Carga Frontal', description: 'Lavadora eficiente con capacidad de carga de 8 kg', price: 499.99, category: 'Electrodomésticos', image: 'URL_IMAGEN_51' },
+  { id: 52, name: 'Refrigerador Side-by-Side', description: 'Refrigerador espacioso con dispensador de agua y hielo', price: 999.99, category: 'Electrodomésticos', image: 'URL_IMAGEN_52' },
+  { id: 53, name: 'Aspiradora Robot', description: 'Aspiradora autónoma con navegación inteligente', price: 349.99, category: 'Electrodomésticos', image: 'URL_IMAGEN_53' },
+  { id: 54, name: 'Horno de Microondas', description: 'Horno compacto con múltiples funciones de cocción', price: 89.99, category: 'Electrodomésticos', image: 'URL_IMAGEN_54' },
+  { id: 55, name: 'Licuadora de Alta Potencia', description: 'Licuadora con motor potente y cuchillas de acero inoxidable', price: 59.99, category: 'Electrodomésticos', image: 'URL_IMAGEN_55' },
+  { id: 56, name: 'Cafetera Programable', description: 'Cafetera con temporizador y jarra térmica de acero inoxidable', price: 79.99, category: 'Electrodomésticos', image: 'URL_IMAGEN_56' },
+  { id: 57, name: 'Batidora de Pie', description: 'Batidora con tazón grande y múltiples velocidades', price: 129.99, category: 'Electrodomésticos', image: 'URL_IMAGEN_57' },
+  { id: 58, name: 'Freidora de Aire', description: 'Freidora sin aceite para cocinar de manera más saludable', price: 69.99, category: 'Electrodomésticos', image: 'URL_IMAGEN_58' },
+  { id: 59, name: 'Plancha de Vapor', description: 'Plancha con función de vapor y suela antiadherente', price: 39.99, category: 'Electrodomésticos', image: 'URL_IMAGEN_59' },
+  { id: 60, name: 'Exprimidor de Cítricos', description: 'Exprimidor eléctrico para preparar jugos frescos', price: 29.99, category: 'Electrodomésticos', image: 'URL_IMAGEN_60' },
 ];
 
 
@@ -239,6 +253,10 @@ axios.get('https://apiproduct-nveo.onrender.com/products')
   .catch(error => {
     console.error('Error al obtener las categorías:', error);
   });
+
+// Rutas de autenticación
+app.use('/auth', authController);
+
 
 
 // Iniciar el servidor
