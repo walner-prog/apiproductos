@@ -1,7 +1,7 @@
 const express = require('express');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const authController = require('./authController'); // Asegúrate de que la ruta sea correcta
+//const jwt = require('jsonwebtoken');
+//const bcrypt = require('bcrypt');
+//const authController = require('./authController'); // Asegúrate de que la ruta sea correcta
 // Luego, utiliza authController como un middleware
 
 
@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const cors = require('cors');
 app.use(cors());
 
-const port = 3001;
+const port = 3000;
 
 // Middleware para parsear JSON
 app.use(express.json());
@@ -255,7 +255,7 @@ axios.get('https://apiproduct-nveo.onrender.com/products')
   });
 
 // Rutas de autenticación
-app.use('/auth', authController);
+//app.use('/auth', authController);
 
 
 
